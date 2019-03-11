@@ -1,0 +1,7 @@
+Titre
+
+Explications
+
+Synthèse sous la forme de "-eeeeee -eeeeee"
+
+Exemple avec screen code source et screen output
