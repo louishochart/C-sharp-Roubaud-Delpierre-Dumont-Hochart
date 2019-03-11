@@ -1,4 +1,0 @@
-vince:à l'intérieur de,types enum,generiques,main(),instructions,expr et opérateurs,commentaires sur la xml
-phil:tableau,evenements,indexeurs,espaces de noms,chaines,
-louis:classes et structs,exceptions,interfaces,types nullable,types
-bapt:délégués,fichiers de registre,interopérabilité,concepts de prog,pointeurs et code unsafe
