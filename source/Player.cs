@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//this script is directly attached to the player prefab
+//it handles mainly ammo, sound and FX. The movements are handled by a FPS controller we took in the asset store
+
 public class Player : HittableEntity
 {
     public AudioClip gruntSample;

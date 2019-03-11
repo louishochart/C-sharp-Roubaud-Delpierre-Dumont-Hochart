@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this class contains a reference to all weapons the player has access to
+//it manages the switching between weapons, and also getting new ammo
+
 public class WeaponHandler : MonoBehaviour
 {
-
+    //references to weapons
     public GameObject main_weapon;
     public GameObject secondary_weapon;
 

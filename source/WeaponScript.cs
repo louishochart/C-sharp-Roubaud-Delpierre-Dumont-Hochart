@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//script attached to each weapon
+//it defines every parameter of the weapon and handles shot and reload
+//also handles animation
+
 public class WeaponScript : MonoBehaviour
 {
     //Constraints
@@ -62,6 +66,7 @@ public class WeaponScript : MonoBehaviour
         printUI();
     }
 
+    //refresh ammunition on screen
     public void printUI()
     {
         if (infiniteAmmo)
@@ -75,7 +80,7 @@ public class WeaponScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // calls fire, reload methods when the right key is pressed
     void Update()
     {
         if (Input.GetKey("left shift"))
@@ -114,6 +119,8 @@ public class WeaponScript : MonoBehaviour
         if(!isRunning && !(_totalBulletCount <= 0) && (_actualBulletCount!=_oneChargerCapacity) ) StartCoroutine(reloadRoutine());
     }
 
+    //handles reload
+    //the player cannot shoot anymore during the time of the coroutine, neither switch weapons
     IEnumerator reloadRoutine()
     {
         isReloading = true;
@@ -138,6 +145,8 @@ public class WeaponScript : MonoBehaviour
         
     }
 
+    //uses physics to cast a rayCast and checks if the "bullet" hit something.
+    //If something is an HittableEntity, then it calls its TakeDamage method
     void Fire()
     {
         if (_actualBulletCount > 0 && _shotCounter < 0 && !isRunning && !isReloading)

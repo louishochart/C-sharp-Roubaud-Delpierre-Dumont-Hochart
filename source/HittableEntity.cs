@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//mother class of all entity having to deal with life, death and hit
+
 public abstract class HittableEntity : MonoBehaviour
 {
     //life handler
@@ -48,8 +50,11 @@ public abstract class HittableEntity : MonoBehaviour
         }
     }
 
+    //when entity takes damage, this method is used for FX handling (blood spray, etc)
     protected abstract void Hit();
 
+    //same as above but this one is called when the damage comes from a rayCast wich means a bullet
+    //used to distinguish different types of dmg
     protected abstract void Hit(RaycastHit hit);
 
     protected abstract void Die();
