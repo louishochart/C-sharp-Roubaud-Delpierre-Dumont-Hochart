@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script to put on a GameObject to make it spawn ennemies
 public class MobSpawnerScript : MonoBehaviour
 {
     //GameObject to spawn
@@ -30,12 +31,14 @@ public class MobSpawnerScript : MonoBehaviour
     void Update()
     {
         spawnCounter -= Time.deltaTime;
-
+        //This condition is here to time the spawn and make it spawn when the player is close enough
         if(spawnCounter <= 0 && Vector3.Distance(transform.position,player.transform.position) <= detectionDistance)
         {
             spawnCounter = timeBetweenSpawn;
+            //Instantiate the enemy
             GameObject enemy = Instantiate(objectToSpawn, transform.position, transform.rotation);
 
+            //Set HP and DMG for different types of enemies
             if (enemyType == "zombie")
                 enemy.GetComponent<Ennemy>().setHPandDMG(StaticDifficultyManager.ZOMBIEHP, StaticDifficultyManager.ZOMBIEDMG);
             else if(enemyType == "skel")

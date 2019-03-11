@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// Script that manage the waves (amount of zombies, speed of them)
 public class WaveManager : MonoBehaviour
 {
     private int waveNumber = 0;

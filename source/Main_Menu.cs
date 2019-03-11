@@ -5,13 +5,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+//Script that display the main menu at the beginning of the game
 public class Main_Menu : MonoBehaviour
 {
-
+    //Buttons 
     public GameObject playNormal;
     public GameObject playHard;
     public GameObject quit;
-
+    //Sounds
     public AudioClip mousePassingBy;
     public AudioClip onClickSample;
     public AudioSource musicSource;
@@ -25,14 +27,18 @@ public class Main_Menu : MonoBehaviour
 
         //PUT MUSIC SOURCE ON AWAKE
 
+
+        //Add the listenre on buttons (to have OnClick methods)
         playNormal.GetComponent<Button>().onClick.AddListener(playNormalOnClick);
         playHard.GetComponent<Button>().onClick.AddListener(playHardOnClick);
         quit.GetComponent<Button>().onClick.AddListener(quitOnClick);
+
 
         EventTrigger.Entry eventtype = new EventTrigger.Entry();
         eventtype.eventID = EventTriggerType.PointerEnter;
         eventtype.callback.AddListener((eventData) => { _ausrc.PlayOneShot(mousePassingBy); });
 
+        //
         playNormal.AddComponent<EventTrigger>();
         playNormal.GetComponent<EventTrigger>().triggers.Add(eventtype);
 
