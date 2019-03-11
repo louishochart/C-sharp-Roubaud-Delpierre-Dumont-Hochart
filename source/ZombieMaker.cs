@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//Script that manage the strength of the zombie depending on the wave level
 public class ZombieMaker
 {
+    //Different statistics of the zombie
     public static float _speed = 2.2f;
     public static float _accel = 8;
 
@@ -16,6 +17,7 @@ public class ZombieMaker
     public static float _dmgPerHit = 6;
 
     // ------------------------------------
+    //Depending on the wave level, it will add to the main statistic these values multiplied by the wave number
 
     public static float _speedAdder = .40f;
     public static float _accelAdder = .5f;
@@ -27,7 +29,7 @@ public class ZombieMaker
     public static float _attackdelayAdder = .1f;
     public static float _dmgPerHitAdder = 2;
 
-
+    //Depending on the size of the zombie (defined randomly), add differents stats
     public static void SetRandomZombieFromPoints(GameObject instZombie, float points)
     {
         if (instZombie == null) return;
@@ -60,7 +62,7 @@ public class ZombieMaker
         }
         calculateCharacteristics(instZombie, points, characteristicProps);
     }
-
+    //calculate how to upgrade stats
     private static void calculateCharacteristics(GameObject instZombie, float points, int[] props)
     {
         Ennemy zombieScript = instZombie.GetComponent<Ennemy>();
