@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Script of the Ennemy
+//Gives the attack, the health, and every interaction it has with the environment and player
 public class Ennemy : HittableEntity
 {
     //Target
@@ -63,7 +65,7 @@ public class Ennemy : HittableEntity
     {
         attackCounter -= Time.deltaTime;
         
-
+        //Give the target of the ennemy which is the player 
         if ((Vector3.Distance(player.transform.position, transform.position) <= detectionDiam) && (isAlive == true))
         {
 
@@ -71,6 +73,7 @@ public class Ennemy : HittableEntity
 
             _anim.SetFloat("speed", 1f);
 
+            // If the ennemy is close enough from the player, it attacks him
             if (Vector3.Distance(player.transform.position, transform.position) <= attackDiam && attackCounter <= 0)
             {
                 audiosrc.PlayOneShot(attackSound);
@@ -85,6 +88,7 @@ public class Ennemy : HittableEntity
         }
     }
 
+   //Routine that reduce the life of the player when the nenemy attacks him
     private void attackRoutine()
     {
         if (Vector3.Distance(player.transform.position, transform.position) <= attackDiam && alive==true)
@@ -105,13 +109,13 @@ public class Ennemy : HittableEntity
         Destroy(Instantiate(hitImpactFX, hit.point, Quaternion.LookRotation(hit.normal)),1f);
         audiosrc.PlayOneShot(impactSound);
     }
-
+    //Set the HP and Damage of the ennemy
     public void setHPandDMG(float hp, float dmg)
     {
         setMaxHP(hp);
         damagePerHit = dmg;
     }
-
+    //Trigger the animation when the ennemy dies
     protected override void Die()
     {
         isAlive = false;
