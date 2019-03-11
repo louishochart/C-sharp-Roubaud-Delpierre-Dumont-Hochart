@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// Script that manage the waves (amount of zombies, speed of them)
+// Script that manage the waves (amount of zombies, spawn speed, wave number)
 public class WaveManager : MonoBehaviour
 {
+    //Gives the current wave
     private int waveNumber = 0;
 
     public Transform[] spawnerArray;
@@ -48,7 +49,7 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
-    
+    //Start the next wave
     private void nextWave()
     {
         waveNumber++;
@@ -58,7 +59,7 @@ public class WaveManager : MonoBehaviour
         Debug.Log(numberOfZombies);
         spawningRoutine();
     }
-
+    //Routine to display on the screen the wave number and number of zombies
     private void spawningRoutine()
     {
         string sentence = "Wave n : " + waveNumber + "\n Number of zombies : " + numberOfZombies * spawnerArray.Length;
